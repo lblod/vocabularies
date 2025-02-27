@@ -1,0 +1,98 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dpv: <https://w3id.org/dpv#> .
+@prefix icr: <http://lblod.data.gift/vocabularies/informationclassification/> . 
+
+icr:confidentialityScore 
+    a rdf:Property ;
+    rdfs:label "Vertrouwelijkheid score"@nl ;
+    skos:definition "Het niveau dat de informatie van het proces alleen gebruikt wordt door diegene die hiervoor geautoriseerd is."@nl ;
+    rdfs:domain dpv:Process ;
+    rdfs:range xsd:integer .
+
+
+icr:integrityScore
+    a rdf:Property ;
+    rdfs:label "Integriteit score"@nl ;
+    skos:definition "Niveau dat de informatie van het proces betrouwbaar is, zowel vanuit technisch als functioneel oogpunt."@nl ;
+    rdfs:domain dpv:Process ;
+    rdfs:range xsd:integer .
+
+
+icr:availabilityScore 
+    a rdf:Property ;
+    rdfs:label "Beschikbaarheid score"@nl ;
+    skos:definition "Niveau dat de informatie van het proces toegankelijk is voor de geautoriseerde gebruikers tijdens normale omstandigheden."@nl ;
+    rdfs:domain dpv:Process ;
+    rdfs:range xsd:integer .
+
+
+icr:containsPersonalData
+    a rdf:Property ;
+    rdfs:label "Bevat persoonlijke gegevens"@nl ;
+    skos:definition "Geeft aan of de informatie van het proces persoonsgegevens bevat."@nl ;
+    rdfs:domain dpv:Process ;
+    rdfs:range xsd:boolean .
+
+
+icr:containsProfessionalData
+    a rdf:Property ;
+    rdfs:label "Bevat professionele gegevens"@nl ;
+    skos:definition "Geeft aan of de informatie van het proces toelaat contact op te nemaen met een individy in een professionele context."@nl
+    rdfs:domain dpv:Process ;
+    rdfs:range xsd:boolean .
+
+
+icr:containsSensitivePersonalData
+    a rdf:Property ;
+    rdfs:label "Bevat bijzondere persoonsgegevens"@nl ;
+    skos:definition "Geeft aan of de informatie van het proces bijzondere persoonsgegevens bevat waarvan het gebruik specifieke aanvullende wettelijke toestemming of rechtvaardiging vereist."@nl
+    rdfs:domain dpv:Process ;
+    rdfs:range xsd:boolean .
+
+
+icr:additionalInformation
+    a rdf:Property ;
+    rdfs:subPropertyOf rdfs:comment ;
+    rdfs:label "Bijkomede informatie"@nl ;
+    skos:definition "Bijkomende informatie gerelateerd aan de informatieclassificatie van het proces."@nl
+    rdfs:domain dpv:Process ;
+    rdfs:range xsd:string .
+
+
+icr:hasControlMeasure
+    a rdf:Property ;
+    rdfs:subPropertyOf rdfs:seeAlso ;
+    rdfs:label "Heeft beheersmaatregel"@nl ;
+    skos:definition "Online locatie waar extra info staat over een maatregel die wordt geïmplementeerd om risico's voor informatiebeveiliging te beheersen of te verminderen confer ISO 27001:2022"@nl
+    rdfs:domain dpv:Process ;
+    rdfs:range xsd:anyUri .
+
+
+icr:hasInformationAsset
+    a rdf:Property ;
+    rdfs:subPropertyOf rdfs:comment ;
+    rdfs:label "Heeft informatie asset"@nl ;
+    skos:definition "Informatieassets die het proces bevat."@nl
+    rdfs:domain dpv:Process ;
+    rdfs:range skos:Concept .
+
+
+icr:isBlueprint
+    a rdf:Property ;
+    rdfs:label "Is blauwdruk proces"@nl ;
+    skos:definition "Duidt aan of het proces generiek is opgebouwd voor specifiekere invulling lokaal."@nl
+    rdfs:domain dpv:Process ;
+    rdfs:range skos:boolean .
+
+
+icr:isRelevantVoorBestuurseenheid
+    a rdf:Property ;
+    rdfs:label "Is relevant voor bestuurseenheid"@nl ;
+    skos:definition "Classificatie van bestuurseenheid waarvoor de informatie relevant is."@nl
+    rdfs:domain dpv:Process ;
+    rdfs:range skos:boolean .
