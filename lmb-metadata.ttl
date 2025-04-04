@@ -1,0 +1,96 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dpv: <https://w3id.org/dpv#> .
+@prefix lmb: <http://lblod.data.gift/vocabularies/lmb/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit> .
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
+
+lmb: a foaf:Document ;
+      foaf:primaryTopic lmb:Vocabulary ;
+      cc:license <http://creativecommons.org/licenses/by/4.0/> .
+
+lmb:Bestuursperiode a rdfs:Class;
+    rdfs:label "Bestuursperiode"@nl ;
+    rdfs:comment "Een bestuursperiode van bestuursorganen in Vlaanderen."@nl .
+
+lmb:MandatarisPublicationStatusCode a rdfs:Class;
+    rdfs:label "Mandataris Publicatie Code"@nl ;
+    rdfs:comment "De publicatie status van een mandataris (e.g. Draft, Niet Bekrachtigd of Bekrachtigd)."@nl ;
+    vann:usageNote "Dit dient vooral voor de interne boekhouding van de lokaal mandatenbeheer applicatie. Mandatarissen met status Draft zijn nog niet officieel en stromen niet door naar de Mandatendatabank. Mandatarissen met status Bekrachtigd zijn ofwel gelinkt aan een besluit URI via ^mandaat:bekrachtigtAanstellingVan of zijn gelinkt aan een URL waar het besluit in menselijk leesbare vorm gevonden kan worden via lmb:linkToBesluit."@nl .
+
+lmb:Installatievergadering a rdfs:Class;
+    rdfs:label "Een voorbereiding van een installatievergadering"@nl ;
+    rdfs:comment "Een voorbereiding van een installatievergadering van één of meerdere bestuurseenheden."@nl .
+
+lmb:InstallatievergaderingStatus a rdfs:Class;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "De status van een voorbereiding van een installatievergadering"@nl ;
+    rdfs:comment "Pas wanneer voorbereiding afgerond is mogen de bijhorende Mandatarissen als finaal worden gezien en mogen ze een andere publicatiestatus dan 'draft' krijgen."@nl .
+
+lmb:Vocabulary a owl:Ontology;
+    rdfs:label "local mandate management vocabulary"@en ,
+    "lokaal mandatenbeheer vocabularium"@nl .
+
+lmb:deactivatedAt
+    a rdf:Property ;
+    rdfs:label "gedeactiveerd op"@nl ;
+    rdfs:comment "Wanneer een bestuursorgaan niet langer besluiten neemt"@nl ;
+    rdfs:domain besluit:Bestuursorgaan ;
+    rdfs:range xsd:boolean .
+
+lmb:heeftBestuursperiode
+    a rdf:Property ;
+    rdfs:label "heeft bestuursperiode"@nl ;
+    rdfs:comment "Dit bestuursorgaan in de tijd is gelinkt aan de gegeven bestuursperiode"@nl ;
+    rdfs:domain besluit:Bestuursorgaan, besluit:Bestuurseenheid, lmb:InstallatieVergadering ;
+    rdfs:range lmb:Bestuursperiode ;
+    vann:usageNote "Opgelet, hoewel het domein verwijst naar besluit:Bestuursorgaan dient het predicaat alleen gebruikt worden op bestuursorganen in de tijd."@nl .
+
+lmb:startYear
+    a rdf:Property ;
+    rdfs:label "beginjaar"@nl ;
+    rdfs:comment "Het jaar waarop de bestuursperiode begint"@nl ;
+    rdfs:domain lmb:Bestuursperiode ;
+    rdfs:range xsd:integer ;
+    vann:usageNote "Het jaar van de bestuursperiode wordt bepaald door het jaar van het eerste besluit van de bestuursorganen gekoppeld aan deze periode.Het kan dus dat er bestuursorganen aan gekoppeld worden die later starten."@nl .
+
+lmb:endYear
+    a rdf:Property ;
+    rdfs:label "beginjaar"@nl ;
+    rdfs:comment "Het jaar waarop de bestuursperiode eindigt"@nl ;
+    rdfs:domain lmb:Bestuursperiode ;
+    rdfs:range xsd:integer ;
+    vann:usageNote "Het jaar van de bestuursperiode wordt bepaald door het jaar van het laatste besluit van de bestuursorganen gekoppeld aan deze periode. Het is dus mogelijk dat een bestuursorgaan dat gekoppeld is aan deze bestuursperiode eerder eindigt."@nl .
+
+lmb:minAantalHouders
+    a rdf:Property ;
+    rdfs:label "minimum aantal houders"@nl ;
+    rdfs:comment "Het minimum aantal houders van een mandaat."@nl ;
+    rdfs:domain mandaat:Mandaat ;
+    rdfs:range xsd:integer ;
+    vann:usageNote "In sommige gevallen kan de bestuurseenheid beslissen om met een kleiner aantal mandatarissen verder te gaan dan decretaal bepaald. In geval wordt deze waarde aangepast en blijft ze voor de rest van de bestuursperiode dezelfde."@nl .
+
+lmb:hasStatus
+    a rdf:Property ;
+    rdfs:label "de status van de installatievergadering"@nl ;
+    rdfs:domain lmb:Installatievergadering ;
+    rdfs:range lmb:InstallatievergaderingStatus .
+
+lmb:linkToBesluit
+    a rdf:Property ;
+    rdfs:label "De URL waar een menselijk leesbare versie van het besluit dat een mandataris bekrachtigd gevonden kan worden."@nl ;
+    rdfs:domain mandaat:Mandataris ;
+    rdfs:range xsd:string .
+
+
+
+
+
+
