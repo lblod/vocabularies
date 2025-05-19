@@ -1,0 +1,54 @@
+@prefix : <http://lblod.data.gift/vocabularies/besluit/> .
+@prefix grddl: <http://www.w3.org/2003/g/data-view#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+<http://lblod.data.gift/vocabularies/besluit/> a owl:Ontology;
+  rdfs:seeAlso <https://data.vlaanderen.be/ns/besluit/>,<https://lblod.github.io/pages-vendors/#/docs/submission-annotations>;  
+  <http://purl.org/vocab/vann/preferredNamespacePrefix> "lblodBesluit";
+  skos:prefLabel "uitbreiding aan het LBLOD besluit vocabularium met betrekking tot inzending en harvesting van besluiten"@nl .
+
+:extractedDecisionContent a owl:DatatypeProperty;
+  rdfs:domain <http://data.vlaanderen.be/ns/besluit#Besluit>;
+  rdfs:isDefinedBy <http://lblod.data.gift/vocabularies/besluit/>;
+  skos:prefLabel "extracted decision content"@en .
+
+:authenticityType a owl:ObjectProperty;
+  rdfs:isDefinedBy <http://lblod.data.gift/vocabularies/besluit/>;
+  rdfs:range skos:Concept;
+  rdfs:domain <http://xmlns.com/foaf/0.1/Document>;
+  skos:definition "Authenticiteit van de ingestuurde beslissing. Zie hier voor de URI's van de concepten."@nl;
+  skos:prefLabel "authenticity type"@en .
+
+:chartOfAccount a owl:ObjectProperty;
+  rdfs:isDefinedBy <http://lblod.data.gift/vocabularies/besluit/>;
+  rdfs:seeAlso <https://github.com/lblod/codelists/blob/master/minimal-belgian-chart-of-accounts.ttl>;
+  rdfs:range skos:Concept;
+  rdfs:domain <http://xmlns.com/foaf/0.1/Document>;
+  skos:definition "Code uit het Minimaal Algemeen Rekeningstelsel (MAR) waar in de beslissing naar verwezen wordt."@nl;
+  skos:prefLabel "chart of account"@en .
+
+:TaxRate a owl:Class;
+  rdfs:isDefinedBy <http://lblod.data.gift/vocabularies/besluit/>;
+  rdfs:subClassOf owl:Thing, <http://schema.org/UnitPriceSpecification>;
+  skos:definition "Percentage waarop de belasting berekend wordt."@nl;
+  skos:prefLabel "Tax Rate"@en .
+
+:taxRate a owl:ObjectProperty;
+  rdfs:isDefinedBy <http://lblod.data.gift/vocabularies/besluit/>;
+  rdfs:range :TaxRate;
+  rdfs:domain <http://xmlns.com/foaf/0.1/Document>;
+  skos:definition "Aanslagvoet die in de beslissing bepaald wordt."@nl;
+  skos:prefLabel "tax rate"@en .
+
+:hasAdditionalTaxRate a owl:DatatypeProperty;
+  rdfs:isDefinedBy <http://lblod.data.gift/vocabularies/besluit/>;
+  rdfs:range xsd:boolean;
+  rdfs:domain <http://xmlns.com/foaf/0.1/Document>;
+  skos:definition "Duidt aan of er nog bijkomende aanslagvoeten zijn dan deze beschreven in de beslissing."@nl;
+  skos:prefLabel "has additional tax rate"@en .
