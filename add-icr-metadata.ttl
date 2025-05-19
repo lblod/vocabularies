@@ -18,9 +18,9 @@ icr:Vocabulary a owl:Ontology;
     rdfs:label "information classification vocabulary"@en ,
     "informatieclassificatie vocabularium"@nl .
 
-dpv:Process a rdfs:Class;
-    rdfs:label "Proces"@nl ;
-    rdfs:comment "Een actie, activiteit of methodologie."@nl .
+# dpv:Process a rdfs:Class;
+#     rdfs:label "Proces"@nl ;
+#     rdfs:comment "Een actie, activiteit of methodologie."@nl .
 
 icr:confidentialityScore 
     a rdf:Property ;
