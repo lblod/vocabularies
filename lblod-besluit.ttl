@@ -9,7 +9,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
 <http://lblod.data.gift/vocabularies/besluit/> a owl:Ontology;
-  rdfs:seeAlso <https://data.vlaanderen.be/ns/besluit/>,<https://lblod.github.io/pages-vendors/#/docs/submission-annotations>;  
+  rdfs:seeAlso <https://data.vlaanderen.be/ns/besluit/>,<https://lblod.github.io/pages-vendors/#/docs/submission-annotations>;
   <http://purl.org/vocab/vann/preferredNamespacePrefix> "lblodBesluit";
   skos:prefLabel "uitbreiding aan het LBLOD besluit vocabularium met betrekking tot inzending en harvesting van besluiten"@nl .
 
