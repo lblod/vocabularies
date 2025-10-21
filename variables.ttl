@@ -23,7 +23,7 @@
     rdfs:label "Variabele"@nl ;
     rdfs:isDefinedBy : .
 
-:isInstanceOf a owl:ObjectProperty ;
+:instanceOf a owl:ObjectProperty ;
     rdfs:label "is instance of"@en ;
     rdfs:label "is instantie van"@nl ;
     rdfs:domain :VariableInstance ;
