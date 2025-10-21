@@ -1,1 +1,38 @@
+@prefix : <http://lblod.data.gift/vocabularies/variables/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+: a owl:Ontology ;
+    dc:created "2025-08-01"^^xsd:date ;
+    dc:title "LBLOD Variables ontology"@en ;
+    vann:preferredNamespacePrefix "variables" ;
+    vann:preferredNamespaceUri : .
+
+:VariableInstance a owl:Class ;
+    rdfs:label "Variable Instance"@en ;
+    rdfs:label "Variabele Instantie"@nl ;
+    rdfs:isDefinedBy : .
+
+:Variable a owl:Class ;
+    rdfs:label "Variable"@en ;
+    rdfs:label "Variabele"@nl ;
+    rdfs:isDefinedBy : .
+
+:isInstanceOf a owl:ObjectProperty ;
+    rdfs:label "is instance of"@en ;
+    rdfs:label "is instantie van"@nl ;
+    rdfs:domain :VariableInstance ;
+    rdfs:range :Variable ;
+    rdfs:isDefinedBy : .
+
+:defaultValue a rdf:Property ;
+    rdfs:label "default value"@en ;
+    rdfs:label "standaardwaarde"@nl ;
+    rdfs:comment "Default value - either a resource or a literal"@en ;
+    rdfs:domain :Variable ;
+    rdfs:isDefinedBy : .
